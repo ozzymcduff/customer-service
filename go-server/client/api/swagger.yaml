@@ -1,120 +1,119 @@
----
-swagger: "2.0"
+openapi: 3.0.0
 info:
-  description: "Some API"
-  version: "1.0.0"
-  title: "API"
-  termsOfService: "See license agreement"
+  title: Customer Service
+  description: "Port of the api for demonstrating mvvm found at [galasoft](https://galasoft.ch/labs/Customers/CustomerService.svc)."
+  version: 1.0.0-oas3
+servers:
+- url: /
 paths:
   /CustomerService.svc/GetAllCustomers:
     get:
       tags:
-      - "CustomerService"
-      operationId: "Get"
-      consumes: []
-      produces:
-      - "text/plain"
-      - "application/json"
-      - "text/json"
-      - "application/xml"
-      - "text/xml"
+      - CustomerService
+      operationId: Get
       parameters: []
       responses:
-        200:
-          description: "Success"
-          schema:
-            $ref: "#/definitions/ArrayOfCustomer"
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfCustomer'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ArrayOfCustomer'
   /CustomerService.svc/SaveCustomer:
     post:
       tags:
-      - "CustomerService"
-      operationId: "Post"
-      consumes:
-      - "application/json-patch+json"
-      - "application/json"
-      - "text/json"
-      - "application/*+json"
-      - "application/xml"
-      - "text/xml"
-      - "application/*+xml"
-      produces:
-      - "text/plain"
-      - "application/json"
-      - "text/json"
-      - "application/xml"
-      - "text/xml"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Customer"
-        x-exportParamName: "Body"
+      - CustomerService
+      operationId: Post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/Customer'
       responses:
-        200:
-          description: "Success"
-          schema:
-            type: "boolean"
-definitions:
-  ArrayOfCustomer:
-    type: "object"
-    properties:
-      customer:
-        type: "array"
-        items:
-          $ref: "#/definitions/Customer"
-    example:
-      customer:
-      - addressCountry: "addressCountry"
-        firstName: "firstName"
-        lastName: "lastName"
-        gender: 6
-        addressStreet: "addressStreet"
-        pictureUri: {}
+        "200":
+          description: Success
+          content:
+            application/xml:
+              schema:
+                type: boolean
+                x-content-type: application/xml
+            text/xml:
+              schema:
+                type: boolean
+components:
+  schemas:
+    ArrayOfCustomer:
+      type: object
+      properties:
+        customer:
+          uniqueItems: false
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+      example:
+        customer:
+        - addressCountry: addressCountry
+          firstName: firstName
+          lastName: lastName
+          gender: Male
+          addressStreet: addressStreet
+          pictureUri: pictureUri
+          accountNumber: 0
+          addressCity: addressCity
+        - addressCountry: addressCountry
+          firstName: firstName
+          lastName: lastName
+          gender: Male
+          addressStreet: addressStreet
+          pictureUri: pictureUri
+          accountNumber: 0
+          addressCity: addressCity
+    Customer:
+      type: object
+      properties:
+        accountNumber:
+          type: integer
+          format: int32
+        addressCity:
+          type: string
+        addressCountry:
+          type: string
+        addressStreet:
+          type: string
+        firstName:
+          type: string
+        gender:
+          type: string
+          format: string
+          enum:
+          - Male
+          - Female
+          - Boy
+          - Girl
+        lastName:
+          type: string
+        pictureUri:
+          $ref: '#/components/schemas/XmlUri'
+      example:
+        addressCountry: addressCountry
+        firstName: firstName
+        lastName: lastName
+        gender: Male
+        addressStreet: addressStreet
+        pictureUri: pictureUri
         accountNumber: 0
-        addressCity: "addressCity"
-      - addressCountry: "addressCountry"
-        firstName: "firstName"
-        lastName: "lastName"
-        gender: 6
-        addressStreet: "addressStreet"
-        pictureUri: {}
-        accountNumber: 0
-        addressCity: "addressCity"
-  Customer:
-    type: "object"
-    properties:
-      accountNumber:
-        type: "integer"
-        format: "int32"
-      addressCity:
-        type: "string"
-      addressCountry:
-        type: "string"
-      addressStreet:
-        type: "string"
-      firstName:
-        type: "string"
-      gender:
-        type: "integer"
-        format: "int32"
-        enum:
-        - 0
-        - 1
-        - 2
-        - 3
-      lastName:
-        type: "string"
-      pictureUri:
-        $ref: "#/definitions/XmlUri"
-    example:
-      addressCountry: "addressCountry"
-      firstName: "firstName"
-      lastName: "lastName"
-      gender: 6
-      addressStreet: "addressStreet"
-      pictureUri: {}
-      accountNumber: 0
-      addressCity: "addressCity"
-  XmlUri:
-    type: "object"
+        addressCity: addressCity
+    XmlUri:
+      type: string
