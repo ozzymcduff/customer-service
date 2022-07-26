@@ -120,9 +120,7 @@ namespace CustomerService
             services.AddRouting(options => options.LowercaseUrls = true);
 
         public static IServiceCollection AddCustomHealthChecks(
-            this IServiceCollection services,
-            IWebHostEnvironment webHostEnvironment,
-            IConfiguration configuration) =>
+            this IServiceCollection services) =>
             services
                 .AddHealthChecks()
                 // Add health checks for external dependencies here. See https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
@@ -140,7 +138,6 @@ namespace CustomerService
 
         public static IServiceCollection AddCustomGraphQL(
             this IServiceCollection services,
-            IWebHostEnvironment webHostEnvironment,
             IConfiguration configuration)
         {
             var graphQLOptions = configuration.GetSection(nameof(ApplicationOptions.GraphQL)).Get<GraphQLOptions>();
@@ -148,7 +145,8 @@ namespace CustomerService
                 .AddGraphQLServer()
                 .AddFiltering()
                 .AddSorting()
-                .EnableRelaySupport()
+                .AddGlobalObjectIdentification()
+                //.AddQueryFieldToMutationPayloads()
                 .AddApolloTracing()
                 .AddAuthorization()
                 .AddProjectScalarTypes()
@@ -157,7 +155,6 @@ namespace CustomerService
                 .AddProjectTypes()
                 .TrimTypes()
                 .ModifyOptions(options => options.UseXmlDocumentation = false)
-                .AddMaxComplexityRule(graphQLOptions.MaxAllowedComplexity)
                 .AddMaxExecutionDepthRule(graphQLOptions.MaxAllowedExecutionDepth)
                 .SetPagingOptions(graphQLOptions.Paging)
                 .SetRequestOptions(() => graphQLOptions.Request)

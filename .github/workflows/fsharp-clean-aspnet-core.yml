@@ -1,4 +1,4 @@
-name: Clean asp.net core in C#
+name: Clean asp.net core in F#
 
 on: 
   push:

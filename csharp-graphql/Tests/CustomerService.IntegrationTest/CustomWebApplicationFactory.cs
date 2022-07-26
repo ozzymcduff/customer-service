@@ -1,6 +1,5 @@
 namespace CustomerService.IntegrationTest
 {
-    using System;
     using System.Net.Http;
     using CustomerService.Options;
     using CustomerService.Services;

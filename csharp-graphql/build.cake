@@ -32,7 +32,7 @@ Task("Restore")
     .IsDependentOn("Clean")
     .Does(() =>
     {
-        DotNetCoreRestore();
+        DotNetRestore();
     });
 
 Task("Build")
@@ -40,9 +40,9 @@ Task("Build")
     .IsDependentOn("Restore")
     .Does(() =>
     {
-        DotNetCoreBuild(
+        DotNetBuild(
             ".",
-            new DotNetCoreBuildSettings()
+            new DotNetBuildSettings()
             {
                 Configuration = configuration,
                 NoRestore = true,
@@ -53,9 +53,9 @@ Task("Test")
     .Description("Runs unit tests and outputs test results to the artefacts directory.")
     .DoesForEach(GetFiles("./Tests/**/*.csproj"), project =>
     {
-        DotNetCoreTest(
+        DotNetTest(
             project.ToString(),
-            new DotNetCoreTestSettings()
+            new DotNetTestSettings()
             {
                 Blame = true,
                 Collectors = new string[] { "XPlat Code Coverage" },
@@ -75,9 +75,9 @@ Task("Publish")
     .Description("Publishes the solution.")
     .DoesForEach(GetFiles("./Source/**/*.csproj"), project =>
     {
-        DotNetCorePublish(
+        DotNetPublish(
             project.ToString(),
-            new DotNetCorePublishSettings()
+            new DotNetPublishSettings()
             {
                 Configuration = configuration,
                 NoBuild = true,

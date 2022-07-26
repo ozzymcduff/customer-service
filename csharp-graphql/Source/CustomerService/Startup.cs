@@ -44,7 +44,7 @@ namespace CustomerService
                 .AddCustomOptions(this.configuration)
                 .AddCustomRouting()
                 .AddCustomResponseCompression(this.configuration)
-                .AddCustomHealthChecks(this.webHostEnvironment, this.configuration)
+                .AddCustomHealthChecks()
                 .AddHttpContextAccessor()
                 .AddServerTiming()
                 .AddControllers()
@@ -52,7 +52,7 @@ namespace CustomerService
                     .AddCustomMvcOptions(this.configuration)
                 .Services
                 .AddCustomAuthorization()
-                .AddCustomGraphQL(this.webHostEnvironment, this.configuration)
+                .AddCustomGraphQL(this.configuration)
                 .AddProjectMappers()
                 .AddProjectServices()
                 .AddProjectRepositories();

@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace CustomerService.Models
+﻿namespace CustomerService.Models
 {
+    using System;
 
     public record Customer(int AccountNumber, Name Name, CustomerGender Gender, Address Address, Uri? PictureUri,
         DateTimeOffset Added)

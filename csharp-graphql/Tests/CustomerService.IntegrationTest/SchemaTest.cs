@@ -1,4 +1,4 @@
-namespace CustomerService.IntegrationTest.Controllers
+namespace CustomerService.IntegrationTest
 {
     using System.Net;
     using System.Net.Http;
