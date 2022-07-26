@@ -73,11 +73,12 @@ module Serializer =
                 | CustomerOutput.Single c -> XDoc.create([ toCustomerXml(c) ])
         d.ToString()
 
-    let deserialize (input:Stream) =
+    let deserialize (input:Stream) = task {
         use r = new StreamReader(input)
-        let doc = Xml.parse(r.ReadToEnd())
-        match doc.Root.Name.LocalName with
-            | "Customer" -> CustomerInput.Single(fromCustomerXml doc.Root)
-            | "ArrayOfCustomer" -> CustomerInput.Multiple(fromXml doc.Root)
-            | v -> failwith("Unknown input! "+v)
+        let! content = r.ReadToEndAsync()
+        let doc = Xml.parse(content)
+        return match doc.Root.Name.LocalName with
+               | "Customer" -> CustomerInput.Single(fromCustomerXml doc.Root)
+               | "ArrayOfCustomer" -> CustomerInput.Multiple(fromXml doc.Root)
+               | v -> failwith("Unknown input! "+v) }
     

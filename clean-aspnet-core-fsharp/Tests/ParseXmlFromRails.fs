@@ -1,7 +1,6 @@
 ﻿namespace Tests
 open Xunit
 open Customers
-open System.Text
 open System.IO
 open FluentAssertions
 
@@ -31,10 +30,8 @@ open FluentAssertions
             s
 
         [<Fact>] member test.
-         ``CanParse`` ()=
-            using (asStream xml)
-            (fun stream->
-                match Serializer.deserialize(stream) with 
-                    | CustomerInput.Single _ -> failwith "expected multiple"
-                    | CustomerInput.Multiple cs -> (cs |> List.head).Should().Be(customer, "customer")
-            )
+         ``CanParse`` ()= task {
+            use stream = asStream xml
+            match! Serializer.deserialize(stream) with 
+                | CustomerInput.Single _ -> failwith "expected multiple"
+                | CustomerInput.Multiple cs -> (cs |> List.head).Should().Be(customer, "customer") |> ignore }

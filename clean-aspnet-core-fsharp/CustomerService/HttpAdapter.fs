@@ -37,14 +37,14 @@ You can mock implementation of the api here:
             //Console.WriteLine("Index")
             context.Response.WriteAsync(indexHtml)
 
-    let saveCustomer (svc: ICustomerService) (context: HttpContext) : Task =
+    let saveCustomer (svc: ICustomerService) (context: HttpContext) : Task = task {
             if (context.Request.Method.Equals("POST")) then
                 context.Response.ContentType <- "application/xml"
-                let c = Serializer.deserialize(context.Request.Body);
-                context.Response.WriteAsync(Serializer.serialize(svc.SaveCustomers(c)))
+                let! c = Serializer.deserialize(context.Request.Body);
+                do! context.Response.WriteAsync(Serializer.serialize(svc.SaveCustomers(c)))
             else
                 context.Response.StatusCode <- 404
-                context.Response.WriteAsync("Not found")
+                do! context.Response.WriteAsync("Not found") }
         
     let getAllCustomers (svc: ICustomerService) (context: HttpContext) : Task = 
         context.Response.ContentType <- "application/xml"
