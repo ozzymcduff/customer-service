@@ -10,7 +10,7 @@ GEM
       racc (~> 1.4)
     nori (2.6.0)
     racc (1.6.1)
-    rack (2.2.6.2)
+    rack (2.2.6.3)
     rack-parser (0.7.0)
       rack
     rack-protection (2.2.3)
