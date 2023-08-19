@@ -1,15 +1,15 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    mini_portile2 (2.8.0)
+    mini_portile2 (2.8.4)
     minitest (5.14.4)
     mustermann (2.0.2)
       ruby2_keywords (~> 0.0.1)
-    nokogiri (1.13.10)
+    nokogiri (1.14.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     nori (2.6.0)
-    racc (1.6.1)
+    racc (1.7.1)
     rack (2.2.6.4)
     rack-parser (0.7.0)
       rack
