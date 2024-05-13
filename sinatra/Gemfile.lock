@@ -1,11 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    mini_portile2 (2.8.5)
+    mini_portile2 (2.8.6)
     minitest (5.14.4)
     mustermann (2.0.2)
       ruby2_keywords (~> 0.0.1)
-    nokogiri (1.15.6)
+    nokogiri (1.16.5)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     nori (2.6.0)
