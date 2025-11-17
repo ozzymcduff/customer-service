@@ -46,7 +46,7 @@ jobs:
         working-directory: ${{env.FILE_PATH}}
       
       - name: Scan for known security vulnerabilities in gems used
-        run: bin/bundler-audit
+        run: bundle exec bundler-audit
         working-directory: ${{env.FILE_PATH}}
 
   lint:
