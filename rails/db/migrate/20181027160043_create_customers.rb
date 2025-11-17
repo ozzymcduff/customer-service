@@ -9,9 +9,9 @@ class CreateCustomers < ActiveRecord::Migration[5.2]
       t.string   "first_name"
       t.string   "gender"
       t.string   "last_name"
-      t.string   "picture_uri"  
+      t.string   "picture_uri"
     end
-    
-    add_index "customers", ["account_number"], name: "index_customers_on_account_number"
+
+    add_index "customers", [ "account_number" ], name: "index_customers_on_account_number"
   end
 end

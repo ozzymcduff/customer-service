@@ -1,15 +1,19 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
 one:
-    account_number: 1
-    first_name: "Oskar"
-    last_name: "Gewalli"
-    gender: "Male"
-# column: value
-#
-# two: {}
-# column: value
+  account_number: 1
+  address_city: Malmoe
+  address_country: Sweden
+  address_street: Lugna gatan 40
+  first_name: Erik
+  gender: Male
+  last_name: Andersson
+
+two:
+  account_number: 2
+  address_city: Malmoe
+  address_country: Sweden
+  address_street: Lugna gatan 40
+  first_name: Karl
+  gender: Male
+  last_name: Nilsson
