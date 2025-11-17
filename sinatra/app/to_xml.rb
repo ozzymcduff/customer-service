@@ -1,4 +1,6 @@
-$properties = 'AccountNumber AddressCity AddressCountry AddressStreet FirstName Gender LastName PictureUri'.split(' ')
+# frozen_string_literal: true
+
+$properties = 'AccountNumber AddressCity AddressCountry AddressStreet FirstName Gender LastName PictureUri'.split
 
 def uncapitalize(val)
   val[0, 1].downcase + val[1..-1]
@@ -38,7 +40,7 @@ def to_customers_xml(customers)
     "<Customer>\n#{properties}\n</Customer>"
   end.join("\n")
   footer = "\n</ArrayOfCustomer>\n"
-  [header, serialized, footer].join('')
+  [header, serialized, footer].join
 end
 
 def to_success_xml(c)

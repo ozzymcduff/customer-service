@@ -1,14 +1,14 @@
+# frozen_string_literal: true
+
 require 'sinatra'
 require 'rack/parser'
 require 'nori'
 require_relative 'customer_service'
 require_relative 'to_xml'
 
-cs = if ENV['RACK_ENV'] == 'test'
-       CustomerService.new
-     else
-       CustomerService.new
-     end
+if ENV['RACK_ENV'] == 'test'
+end
+cs = CustomerService.new
 
 xml_parser = Nori.new(strip_namespaces: true)
 use Rack::Parser, parsers: {
