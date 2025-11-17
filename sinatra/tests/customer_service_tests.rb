@@ -43,24 +43,23 @@ class CustomerServiceTest < Minitest::Test
   def test_it_can_serve_up_index
     get '/'
     assert last_response.ok?
-    assert_equal "text/html;charset=utf-8", last_response["Content-Type"]
+    assert_equal 'text/html;charset=utf-8', last_response['Content-Type']
   end
 
   def test_should_get_all_customer
     get '/CustomerService.svc/GetAllCustomers'
     assert last_response.ok?
-    assert_equal "text/xml;charset=utf-8", last_response["Content-Type"]
+    assert_equal 'text/xml;charset=utf-8', last_response['Content-Type']
     assert_equal $get_all_customers, last_response.body
   end
 
   def test_should_be_able_to_save_customer
-    post '/CustomerService.svc/SaveCustomer', $single_customer, { 
-        'CONTENT_TYPE' => 'application/xml', 
-        'Content-Type' => 'application/xml'
-      }
+    post '/CustomerService.svc/SaveCustomer', $single_customer, {
+      'CONTENT_TYPE' => 'application/xml',
+      'Content-Type' => 'application/xml'
+    }
     assert last_response.ok?
-    assert_equal "text/xml;charset=utf-8", last_response["Content-Type"]
-    assert_equal "<success>true</success>", last_response.body 
-
+    assert_equal 'text/xml;charset=utf-8', last_response['Content-Type']
+    assert_equal '<success>true</success>', last_response.body
   end
 end
