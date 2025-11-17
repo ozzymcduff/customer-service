@@ -27,5 +27,6 @@ end
 post '/CustomerService.svc/SaveCustomer' do
   customer = customer_from_hash(params['Customer'])
   content_type 'text/xml'
-  to_success_xml cs.save_customer customer
+  cs.save_customer customer
+  to_success_xml true
 end

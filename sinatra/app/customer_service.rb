@@ -18,11 +18,15 @@ class CustomerService
   end
 
   def save_customer(customer)
-    # puts customer
     account_number = customer[:account_number].to_i
-    found = @customers.find do |c|
+    customer_to_update = @customers.find do |c|
       c[:account_number] == account_number
     end
-    !found.nil?
+
+    if customer_to_update
+      customer_to_update.merge!(customer)
+    else
+      @customers << customer
+    end
   end
 end
