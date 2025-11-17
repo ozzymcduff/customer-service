@@ -18,9 +18,10 @@ def serialize_property(property, customer)
 end
 
 def customer_from_hash(customer)
-  $properties.map do |prop|
+  tuples = $properties.map do |prop|
     [to_ruby_case(prop), customer[prop]]
-  end.each_with_object({}) do |nxt, memo|
+  end
+  tuples.each_with_object({}) do |nxt, memo|
     memo[nxt[0].to_sym] = nxt[1]
   end
 end
