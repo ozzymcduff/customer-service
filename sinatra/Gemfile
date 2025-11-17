@@ -8,7 +8,7 @@ gem 'nori'
 gem 'rack'
 gem 'rack-parser', require: 'rack/parser'
 gem 'rack-test', require: 'rack/test'
-gem 'rackup', '~> 2.1'
+gem 'rackup'
 gem 'rake'
 gem 'sinatra'
 

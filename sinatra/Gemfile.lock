@@ -150,11 +150,11 @@ DEPENDENCIES
   rack
   rack-parser
   rack-test
-  rackup (~> 2.1)
+  rackup
   rake
   reek
   rubocop
   sinatra
 
 BUNDLED WITH
-   2.6.9
+   2.5.22
