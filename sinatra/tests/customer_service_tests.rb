@@ -2,7 +2,7 @@
 
 require_relative 'test_helper'
 
-$get_all_customers = <<-END
+$get_all_customers = <<-END_GET_ALL_CUSTOMERS
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCustomer
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -19,9 +19,9 @@ $get_all_customers = <<-END
   <PictureUri xsi:nil="true"/>
 </Customer>
 </ArrayOfCustomer>
-END
+END_GET_ALL_CUSTOMERS
 
-$single_customer = <<-END
+$single_customer = <<-END_SINGLE_CUSTOMER
 <?xml version="1.0" encoding="utf-8"?>
 <Customer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.datacontract.org/2004/07/Customers">
   <AccountNumber>1</AccountNumber>
@@ -33,7 +33,7 @@ $single_customer = <<-END
   <LastName>Gewalli</LastName>
   <PictureUri xsi:nil="true" />
 </Customer>
-END
+END_SINGLE_CUSTOMER
 
 class CustomerServiceTest < Minitest::Test
   include Rack::Test::Methods

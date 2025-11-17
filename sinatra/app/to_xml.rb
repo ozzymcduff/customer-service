@@ -26,13 +26,13 @@ def customer_from_hash(customer)
 end
 
 def to_customers_xml(customers)
-  header = <<~END
+  header = <<~XML_HEADER
     <?xml version="1.0" encoding="utf-8"?>
     <ArrayOfCustomer
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         xmlns="http://schemas.datacontract.org/2004/07/Customers">
-  END
+  XML_HEADER
   serialized = customers.map do |customer|
     properties = $properties.map do |prop|
       serialize_property prop, customer

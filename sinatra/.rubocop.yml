@@ -50,6 +50,9 @@ Lint/RescueException:
 Style/SpecialGlobalVars:
   Enabled: false
 
+Style/GlobalVars:
+  Enabled: false
+
 Bundler/DuplicatedGem:
   Enabled: false
 

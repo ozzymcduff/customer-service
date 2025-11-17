@@ -6,8 +6,6 @@ require 'nori'
 require_relative 'customer_service'
 require_relative 'to_xml'
 
-if ENV['RACK_ENV'] == 'test'
-end
 cs = CustomerService.new
 
 xml_parser = Nori.new(strip_namespaces: true)
