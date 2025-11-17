@@ -1,0 +1,57 @@
+<%= form_with(model: customer) do |form| %>
+  <% if customer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+        <% customer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :account_number, style: "display: block" %>
+    <%= form.number_field :account_number %>
+  </div>
+
+  <div>
+    <%= form.label :address_city, style: "display: block" %>
+    <%= form.text_field :address_city %>
+  </div>
+
+  <div>
+    <%= form.label :address_country, style: "display: block" %>
+    <%= form.text_field :address_country %>
+  </div>
+
+  <div>
+    <%= form.label :address_street, style: "display: block" %>
+    <%= form.text_field :address_street %>
+  </div>
+
+  <div>
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= form.label :gender, style: "display: block" %>
+    <%= form.text_field :gender %>
+  </div>
+
+  <div>
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= form.label :picture_uri, style: "display: block" %>
+    <%= form.text_field :picture_uri %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
