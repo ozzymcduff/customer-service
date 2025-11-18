@@ -7,9 +7,11 @@ on:
   push:
     paths:
       - 'rails/**'
+      - '.github/workflows/rails.yml'
   pull_request:
     paths:
       - 'rails/**'
+      - '.github/workflows/rails.yml'
 
 jobs:
   scan_ruby:

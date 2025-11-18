@@ -8,9 +8,11 @@ on:
   push:
     paths:
       - 'sinatra/**'
+      - '.github/workflows/sinatra.yml'
   pull_request:
     paths:
       - 'sinatra/**'
+      - '.github/workflows/sinatra.yml'
 
 jobs:
   test:
