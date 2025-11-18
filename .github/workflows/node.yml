@@ -6,11 +6,11 @@ on:
   push:
     paths:
       - 'node/**'
-      - 'customer-service/.github/workflows/node.yml'
+      - '.github/workflows/node.yml'
   pull_request:
     paths:
       - 'node/**'
-      - 'customer-service/.github/workflows/node.yml'
+      - '.github/workflows/node.yml'
 
 jobs:
   build:
