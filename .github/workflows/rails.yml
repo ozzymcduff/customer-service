@@ -137,3 +137,36 @@ jobs:
           name: screenshots
           path: ${{ github.workspace }}/${{env.FILE_PATH}}/tmp/screenshots
           if-no-files-found: ignore
+
+  reek:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          working-directory: ${{env.FILE_PATH}}
+
+      - name: Code smell detector
+        run: bundle exec reek
+        working-directory: ${{env.FILE_PATH}}
+
+
+  fasterer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          working-directory: ${{env.FILE_PATH}}
+
+      - name: Use Fasterer to check various places in your code that could be faster.
+        run: bundle exec fasterer
+        working-directory: ${{env.FILE_PATH}}          
