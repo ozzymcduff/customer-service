@@ -96,18 +96,18 @@ jobs:
         working-directory: ${{env.FILE_PATH}}
 
 
-  # fasterer:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v5
+  fasterer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
 
-  #     - name: Set up Ruby
-  #       uses: ruby/setup-ruby@v1
-  #       with:
-  #         bundler-cache: true
-  #         working-directory: ${{env.FILE_PATH}}
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          working-directory: ${{env.FILE_PATH}}
 
-  #     - name: Use Fasterer to check various places in your code that could be faster.
-  #       run: bundle exec fasterer
-  #       working-directory: ${{env.FILE_PATH}}
+      - name: Use Fasterer to check various places in your code that could be faster.
+        run: bundle exec fasterer
+        working-directory: ${{env.FILE_PATH}}
