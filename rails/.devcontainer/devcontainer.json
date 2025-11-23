@@ -16,7 +16,14 @@
 	// "forwardPorts": [3000, 5432],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "gem install overcommit && bundle install && rake db:setup"
+	"postCreateCommand": "gem install overcommit && bundle install && rake db:setup",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"marcoroth.herb-lsp"
+			]
+		}
+	}
 
 	// Configure tool-specific properties.
 	// "customizations": {},
